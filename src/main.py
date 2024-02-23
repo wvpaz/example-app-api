@@ -3,7 +3,7 @@ from starlette.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from src.routers.base_router import routers
 
-CATALOG_API_PREFIX = '/api'
+EXAMPLE_APP_API_PREFIX = '/api'
 
 app = FastAPI(
     title="example-app API", 
@@ -19,8 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(routers, prefix=CATALOG_API_PREFIX)
+app.include_router(routers, prefix=EXAMPLE_APP_API_PREFIX)
 
 @app.get("/")
 async def main():
-    return RedirectResponse(url=CATALOG_API_PREFIX + "/docs")
+    return RedirectResponse(url=EXAMPLE_APP_API_PREFIX + "/docs")
